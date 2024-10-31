@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Combinaciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #fff;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Generador de Combinaciones de 2 Dígitos</h1>
+<button id="generar">Generar Combinaciones</button>
+<ul id="combinaciones"></ul>
+
+<script>
+    function generarCombinaciones() {
+        const caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        const combinaciones = [];
+        
+        // Generar todas las combinaciones posibles de 2 caracteres
+        for (let i = 0; i < caracteres.length; i++) {
+            for (let j = 0; j < caracteres.length; j++) {
+                combinaciones.push(caracteres[i] + caracteres[j]);
+            }
+        }
+        
+        // Mostrar combinaciones en la lista
+        const lista = document.getElementById('combinaciones');
+        lista.innerHTML = ''; // Limpiar la lista antes de añadir nuevas combinaciones
+        combinaciones.forEach(combinacion => {
+            const item = document.createElement('li');
+            item.textContent = combinacion;
+            lista.appendChild(item);
+        });
+    }
+
+    document.getElementById('generar').addEventListener('click', generarCombinaciones);
+</script>
+
+</body>
+</html>
